@@ -39,20 +39,22 @@ function ProductCard({ image, name, price, large }) {
     setShowCart(false);
   };
 
- return (
-    <div className='newimg'>
-      <div className={`product-card${large ? ' large' : ''}`}>
-        <img src={image} alt={name} style={{ width: '200px', height: '200px', display: 'flex' }} />
-        <div className="product-info">
-          <h4 className="product-name">{name}</h4> {/* Add a class for styling */}
-          <p className="price">{price}</p>
-        </div>
-        <div className="product-actions">
-          <button className="btn-add-to-cart" onClick={() => { addToCart(); toggleCart(); }}>
-            <IoCart /> Add to Cart
-          </button>
-        </div>
-      </div>
+  return (
+    <div>
+      <a href="https://sneak4-j2iv.vercel.app/" className='newimg'>
+        <div className={`product-card${large ? ' large' : ''}`}>
+          <img src={image} alt={name} style={{ width: '200px', height: '200px', display: 'flex' }} />
+          <div className="product-info">
+            <h4 className="product-name">{name}</h4>
+            <p className="price">{price}</p>
+          </div> 
+          <div className="product-actions">
+            <button className="btn-add-to-cart" onClick={() => { addToCart(); toggleCart(); }}>
+              <IoCart /> Add to Cart
+            </button>
+          </div>
+        </div> 
+      </a> 
       {showCart && (
         <div id="cart" className="cart-content">
           {cartItems.map((item, index) => (
@@ -74,7 +76,6 @@ function ProductCard({ image, name, price, large }) {
     </div>
   );
 }
-
 
 
 function App() {
