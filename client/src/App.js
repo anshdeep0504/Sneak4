@@ -40,7 +40,7 @@ function ProductCard({ image, name, price, large }) {
   };
 
   return (
-    return (
+    
     <a href="https://sneak4-j2iv.vercel.app/">
     <div className='newimg'>
       <div className={`product-card${large ? ' large' : ''}`}>
