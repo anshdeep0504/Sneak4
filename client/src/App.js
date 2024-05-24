@@ -40,13 +40,12 @@ function ProductCard({ image, name, price, large }) {
   };
 
   return (
-    
-    <a href="https://sneak4-j2iv.vercel.app/">
+  <a href="https://sneak4-j2iv.vercel.app/">
     <div className='newimg'>
       <div className={`product-card${large ? ' large' : ''}`}>
         <img src={image} alt={name} style={{ width: '200px', height: '200px', display: 'flex' }} />
         <div className="product-info">
-          <h4 className="product-name">{name}</h4> {/* Add a class for styling */}
+          <h4 className="product-name">{name}</h4>
           <p className="price">{price}</p>
         </div>
         <div className="product-actions">
@@ -55,28 +54,27 @@ function ProductCard({ image, name, price, large }) {
           </button>
         </div>
       </div>
-</a>
-      {showCart && (
-        <div id="cart" className="cart-content">
-          {cartItems.map((item, index) => (
-            <div key={index} className="cart-item">
-              <img src={image} alt={name} style={{ width: '50px', height: '50px' }} />
-              <div>
-                <p>{item.name}</p>
-                <p>Price: ${item.price.toFixed(2)}</p>
-                <p>Quantity: {item.quantity}</p>
-              </div>
-            </div>
-          ))}
-          <p>Total Quantity: {calculateTotalQuantity()}</p>
-          <p>Total Price: ${calculateTotalPrice()}</p>
-          <div className='pay'><p>Checkout Now</p></div>
-          <button className="btn-back" onClick={closeCart}>Continue Shopping</button>
-        </div>
-      )}
     </div>
-  );
-}
+    {showCart && (
+      <div id="cart" className="cart-content">
+        {cartItems.map((item, index) => (
+          <div key={index} className="cart-item">
+            <img src={item.image} alt={item.name} style={{ width: '50px', height: '50px' }} />
+            <div>
+              <p>{item.name}</p>
+              <p>Price: ${item.price.toFixed(2)}</p>
+              <p>Quantity: {item.quantity}</p>
+            </div>
+          </div>
+        ))}
+        <p>Total Quantity: {calculateTotalQuantity()}</p>
+        <p>Total Price: ${calculateTotalPrice()}</p>
+        <div className='pay'><p>Checkout Now</p></div>
+        <button className="btn-back" onClick={closeCart}>Continue Shopping</button>
+      </div>
+    )}
+  </a>
+);
 
 
 
