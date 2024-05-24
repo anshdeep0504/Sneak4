@@ -40,44 +40,43 @@ function ProductCard({ image, name, price, large }) {
   };
 
   return (
-   <div className='newimg'>
-  <div className={`product-card${large ? ' large' : ''}`}>
-    <a href="https://sneak4-j2iv.vercel.app/">
-      <img src={image} alt={name} style={{ width: '200px', height: '200px', display: 'flex' }} />
-    </a>
-    <div className="product-info">
-      <h4 className="product-name">{name}</h4> {/* Add a class for styling */}
-      <p className="price">{price}</p>
+  <div className='newimg'>
+    <div className={`product-card${large ? ' large' : ''}`}>
+      <a href="https://sneak4-j2iv.vercel.app/">
+        <img src={image} alt={name} style={{ width: '200px', height: '200px', display: 'flex' }} />
+      </a>
+      <div className="product-info">
+        <h4 className="product-name">{name}</h4> {/* Add a class for styling */}
+        <p className="price">{price}</p>
+      </div>
+      <div className="product-actions">
+        <button className="btn-add-to-cart" onClick={() => { addToCart(); toggleCart(); }}>
+          <IoCart /> Add to Cart
+        </button>
+      </div>
     </div>
-    <div className="product-actions">
-      <button className="btn-add-to-cart" onClick={() => { addToCart(); toggleCart(); }}>
-        <IoCart /> Add to Cart
-      </button>
-    </div>
-  </div>
-</div>
 
-      {showCart && (
-        <div id="cart" className="cart-content">
-          {cartItems.map((item, index) => (
-            <div key={index} className="cart-item">
-              <img src={image} alt={name} style={{ width: '50px', height: '50px' }} />
-              <div>
-                <p>{item.name}</p>
-                <p>Price: ${item.price.toFixed(2)}</p>
-                <p>Quantity: {item.quantity}</p>
-              </div>
+    {showCart && (
+      <div id="cart" className="cart-content">
+        {cartItems.map((item, index) => (
+          <div key={index} className="cart-item">
+            <img src={item.image} alt={item.name} style={{ width: '50px', height: '50px' }} />
+            <div>
+              <p>{item.name}</p>
+              <p>Price: ${item.price.toFixed(2)}</p>
+              <p>Quantity: {item.quantity}</p>
             </div>
-          ))}
-          <p>Total Quantity: {calculateTotalQuantity()}</p>
-          <p>Total Price: ${calculateTotalPrice()}</p>
-          <div className='pay'><p>Checkout Now</p></div>
-          <button className="btn-back" onClick={closeCart}>Continue Shopping</button>
-        </div>
-      )}
-    </div>
-  );
-}
+          </div>
+        ))}
+        <p>Total Quantity: {calculateTotalQuantity()}</p>
+        <p>Total Price: ${calculateTotalPrice()}</p>
+        <div className='pay'><p>Checkout Now</p></div>
+        <button className="btn-back" onClick={closeCart}>Continue Shopping</button>
+      </div>
+    )}
+  </div>
+);
+
 
 
 function App() {
